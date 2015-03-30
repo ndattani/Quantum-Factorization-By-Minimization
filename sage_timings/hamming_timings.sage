@@ -2,8 +2,8 @@ import re
 
 ##########################Change these if using on new computer########################
 
-INPUT_FILE_DIRECTORY = "/Users/emileokada/Documents/Quatum Computing/Primes generated/"
-OUTPUT_DIRECTORY = '/Users/emileokada/Documents/Quatum Computing/Timings/'
+INPUT_FILE_DIRECTORY = "/Users/emileokada/Documents/Quantum Computing/Primes generated/"
+OUTPUT_DIRECTORY = '/Users/emileokada/Documents/Quantum Computing/Timings/'
 
 #######################################################################################
 
@@ -24,7 +24,7 @@ def run_factorizations(N):
 	input_file_name = INPUT_FILE_DIRECTORY+"hamming_primes_"+str(N)+"x"+str(N)+".txt"
 	output_file_name = OUTPUT_DIRECTORY+"timings_"+str(N)+"x"+str(N)+".txt"
 
-	semi_primes = import_data(file_name)
+	semi_primes = import_data(input_file_name)
 
 	output_file=open(output_file_name,'w')
 	
