@@ -1,4 +1,5 @@
 import re
+import sys
 
 ##########################Change these if using on new computer########################
 
@@ -21,20 +22,25 @@ def import_data(file_name):
 	return data
 
 def run_factorizations(N):
-	input_file_name = INPUT_FILE_DIRECTORY+"hamming_primes_"+str(N)+"x"+str(N)+".txt"
-	output_file_name = OUTPUT_DIRECTORY+"timings_"+str(N)+"x"+str(N)+".txt"
+	try:
+		input_file_name = INPUT_FILE_DIRECTORY+"hamming_primes_"+str(N)+"x"+str(N)+".txt"
+		output_file_name = OUTPUT_DIRECTORY+"timings_"+str(N)+"x"+str(N)+".txt"
 
-	semi_primes = import_data(input_file_name)
+		semi_primes = import_data(input_file_name)
 
-	output_file=open(output_file_name,'w')
-	
-	for (semiprime,hamming_distance,p,q) in semi_primes:
-		output_file.write('('+take_time(semiprime)+','+str(hamming_distance)+','+str(p)+','+str(q)+')'+'\n')
-	
-	output_file.close()
+		output_file=open(output_file_name,'w',0)
 
+		sys.stdout = output_file
+		
+		for (semiprime,hamming_distance,p,q) in semi_primes:
+			print '('+take_time(semiprime)+','+semiprime+','+str(hamming_distance)+','+str(p)+','+str(q)+')'+'\n'
+		
+		output_file.close()
+	except KeyboardInterrupt:
+		output_file.close()
 
 #Run script:
 
-for N in range(70,520,10):
+
+for N in range(70,530,10):
 	run_factorizations(N)
